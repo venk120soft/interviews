@@ -140,3 +140,66 @@ Can you tell me the life cycle hooks that will execute while render phase and up
 What is the difference between null and undefined?
 
 What is the difference between == and ===?
+
+Why you should add babel polyfill for every React application?
+https://levelup.gitconnected.com/why-you-should-add-babel-polyfill-for-every-react-application-1997bdb8a524
+All latest ECMA features are not supported by old browsers, so babel convert all new fetures into Ecma Script 5(which is understood by every browser)
+Even though some features like promises and array prototypes and etc.. are not supported by old browsers
+so to deal with these type of dependencies every react app should have polyfill
+
+When and Why do we use polyfill.js? how many ways we can use this?
+Ans: To support new ECMA script features in to multiple browsers we use polyfils configuration
+Explanation:
+Some browsers doesnot support new features of ECMA script in some browsers (Ex: Array.include() is not supported in IE browser)
+To add new features available to the browsers we write dependencies explicitly.
+So that these files will be executed before any other code executes
+
+This can be done in 2 ways:
+##### Using polyfill.js file and register in WebPackConfig
+Create the polyfil dependencies in polyfills.js file
+
+```javascript
+'use strict';
+
+if (typeof Promise === 'undefined') {
+  // Rejection tracking prevents a common issue where React gets into an
+  // inconsistent state due to an error, but it gets swallowed by a Promise,
+  // and the user has no idea what causes React's erratic future behavior.
+  require('promise/lib/rejection-tracking').enable();
+  window.Promise = require('promise/lib/es6-extensions.js');
+}
+
+// fetch() polyfill for making API calls.
+require('whatwg-fetch');
+
+// Object.assign() is commonly used with React.
+// It will use the native implementation if it's present and isn't buggy.
+Object.assign = require('object-assign');
+
+// In tests, polyfill requestAnimationFrame since jsdom doesn't provide it yet.
+// We don't polyfill it in the browser--this is user's responsibility.
+if (process.env.NODE_ENV === 'test') {
+  require('raf').polyfill(global);
+}
+
+// Then in webpack.config.dev.js
+
+module.exports ={
+  entry: [
+    // We ship a few polyfills by default:
+    require.resolve('./polyfills'),
+    require.resolve('react-dev-utils/webpackHotDevClient'),
+    // Finally, this is your app's code:
+    paths.appIndexJs,
+    ]
+}
+
+```
+##### By Installing the babel-polyfil
+npm install --save babel-polyfill
+Then Do 
+import "babel-polyfill"
+in to App.Js file (root folder)
+
+#### We can also use CDN polyfil service
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.includes"></script>
