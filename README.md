@@ -148,8 +148,12 @@ add3(4);
 ```
 The first statement returns 7, like the add(3, 4) statement. The second statement defines a new function called add3 that will add 3 to its argument. (This is what some may call a closure.) The third statement uses the add3 operation to add 3 to 4, again producing 7 as a result.
 
-PropDrilling and how did you solved
-How did youSwagger
+What's the differnce b/w promises and async await
+What are Promises?
+How to make async requests without promises?Ans: Using callback
+What's wrong with callback approach and what causes to switch to the Promises?
+PropDrilling and how did you solved? with the help of other state management techniques
+How did you use Swagger?
 Call, Bind, Apply
 Arrow functions
 Hoisting
@@ -158,7 +162,7 @@ useCallback
 useContext
 useRef
 Closure
-local storage vs cookie
+local storage vs cookie? diference is we can store less amount of data in cookies than local storage and both are stored in browser
 CORS, cxs attacks
 JWT tokens, Auth tokens
 Flux vs Redux
