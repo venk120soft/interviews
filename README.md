@@ -6,8 +6,10 @@ Explain your daily routine while working with Microsoft?
 App Studio
 Currently working on chat based document sharing application which is available in both desktop and web. In daily basis used to create components that will talk throw web api to Azure Cosmos DB on firing the respective events. handling the state in single redux store with one way binding for all the  actions performed on the react components.
 
-1) What is javascript? is Javascript synchronous? how does the asynchronous operations performed under the hood in javascript?
-  Javascript is case sensitive, synchronous, single threaded and object oriented programming language
+##### 1) What is javascript? is Javascript synchronous? how does the asynchronous operations performed under the hood in javascript?
+  
+Javascript is case sensitive, synchronous, single threaded and object oriented programming language. 
+Async operations like promises are put into an event queue, which runs after the main thread has finished processing so that they do not block subsequent JavaScript code from running. 
 
 2) What are the latest ECMA script features (not ECMA 6)
 
